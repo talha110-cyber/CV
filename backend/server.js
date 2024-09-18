@@ -5,6 +5,12 @@ const app = express();
 
 app.use(cors());  // Add this line to enable CORS
 
+// Middleware to log IP address of incoming requests
+app.use((req, res, next) => {
+    console.log(`Client IP: ${req.ip}`);
+    next();
+});
+
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
