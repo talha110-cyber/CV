@@ -1,1 +1,1 @@
-# Checkout my Resume. LINK : https://main.d1ikypkwvdq9a8.amplifyapp.com/
+# Checkout my Resume @ https://main.d1ikypkwvdq9a8.amplifyapp.com/
