@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Define a simple route
 app.get('/api/name', (req, res) => {
-    res.json({ name: "Talha" });
+    res.json({ name: "junaid" });
 });
 
 // Serve React front-end
