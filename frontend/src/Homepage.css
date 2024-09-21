@@ -1,7 +1,7 @@
 /* Homepage background */
 .homepage {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #f80000 0%, #5d1a1a 100%);  /* Smooth gradient */
+    background: linear-gradient(135deg, #00dff8 0%, #5d1a1a 100%);  /* Smooth gradient */
     min-height: 100vh;
     padding: 20px;
     color: #fffefe;
@@ -26,12 +26,17 @@
     color: #000;
 }
 
+.profile-image {
+    width: 150px;
+    height: 150px;
+}
 /* Links in the header */
 .header a {
     color: #000000; /* Golden color for links */
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s ease-in-out;
+    border-bottom: 1px solid #000000;
 }
 
 .header a:hover {
