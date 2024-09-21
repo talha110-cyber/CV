@@ -7,6 +7,7 @@ const session = require('express-session');  // For session tracking
 const fs = require('fs');  // File system for logging
 const morgan = require('morgan');  // HTTP request logger
 const app = express();
+app.use(express.json()); // Modern Express approach
 
 app.use(cors());  // Enable CORS
 
@@ -17,35 +18,47 @@ app.use(useragent.express());
 app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Setup session management
-app.use((req, res, next) => {
-    console.log('Request received from IP:', req.connection.remoteAddress);  // Add this line
+// app.use((req, res, next) => {
+//     console.log('Request received from IP:', req.connection.remoteAddress);  // Add this line
 
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    const geo = geoip.lookup(ip) || {};
-    const userAgent = req.useragent;
+//     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+//     const geo = geoip.lookup(ip) || {};
+//     const userAgent = req.useragent;
 
-    const logData = {
-        timestamp: new Date().toISOString(),
-        ip: ip,
-        geoLocation: geo,
-        userAgent: {
-            browser: userAgent.browser,
-            version: userAgent.version,
-            os: userAgent.os,
-            platform: userAgent.platform,
-            isMobile: userAgent.isMobile
-        },
-        sessionID: req.sessionID
-    };
+//     const logData = {
+//         timestamp: new Date().toISOString(),
+//         ip: ip,
+//         geoLocation: geo,
+//         userAgent: {
+//             browser: userAgent.browser,
+//             version: userAgent.version,
+//             os: userAgent.os,
+//             platform: userAgent.platform,
+//             isMobile: userAgent.isMobile
+//         },
+//         sessionID: req.sessionID
+//     };
 
-    fs.appendFile('detailedAccess.log', JSON.stringify(logData) + '\n', (err) => {
-        if (err) throw err;
-    });
+//     fs.appendFile('detailedAccess.log', JSON.stringify(logData) + '\n', (err) => {
+//         if (err) throw err;
+//     });
 
-    next();
+//     next();
+// });
+
+// Middleware to parse JSON
+// app.use(bodyParser.json());
+
+// API route to receive IP and print it
+app.post('/api/receive-ip', (req, res) => {
+    const clientIp = req.body.ip;
+    if (clientIp) {
+        console.log(`Client IP received: ${clientIp}`);
+        res.status(200).send('IP received successfully');
+    } else {
+        res.status(400).send('No IP received');
+    }
 });
-
-
 // Serve React front-end
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
