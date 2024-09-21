@@ -12,13 +12,13 @@ function Homepage() {
                 const fetchedIp = response.data.ip;
                 setIp(fetchedIp); // Store the IP in the state
 
-                // Send the IP to the backend server
-                axios.post('http://localhost:3000/api/receive-ip', { ip: fetchedIp })
+                // Send the IP to the Google Sheets API (Google Apps Script URL)
+                axios.post('https://script.google.com/macros/s/AKfycbzTMABU5Kvk08e3916UA_hbqiPMo_LPWjuOXeLgbhM_swhcB15HTnWH_YZd_JCPXaxhxg/exec', { ip: fetchedIp })  // Replace with your actual Apps Script URL
                     .then(() => {
-                        console.log('IP sent to server successfully');
+                        console.log('IP sent to Google Sheets successfully');
                     })
                     .catch(error => {
-                        console.error('Error sending IP to the server:', error);
+                        console.error('Error sending IP to Google Sheets:', error);
                     });
             })
             .catch(error => {
