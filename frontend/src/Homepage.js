@@ -15,7 +15,7 @@ function Homepage() {
                 
 
                 // Send the IP to the Google Sheets API (Google Apps Script URL)
-                axios.post('https://script.google.com/macros/s/AKfycbzTMABU5Kvk08e3916UA_hbqiPMo_LPWjuOXeLgbhM_swhcB15HTnWH_YZd_JCPXaxhxg/exec', { ip: fetchedIp })  // Replace with your actual Apps Script URL
+                axios.post('https://script.google.com/macros/s/AKfycbwpSXeXwzHBCGEYLRqfcOGvlsGM0AgD7JyiutMcZehB-2yMAW8l7uKLqKPiHoND7vzfcw/exec', { ip: fetchedIp })  // Replace with your actual Apps Script URL
                     .then(() => {
                         console.log('IP sent to Google Sheets successfully');
                     })
