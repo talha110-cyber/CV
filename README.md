@@ -1,1 +1,1 @@
-# Checkout my Resume @ https://main.d1ikypkwvdq9a8.amplifyapp.com/
+This is sample website for research purposes of our sproj
