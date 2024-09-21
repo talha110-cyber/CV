@@ -5,24 +5,26 @@ import './Homepage.css';
 function Homepage() {
     const [ip, setIp] = useState('');
 
+  
     useEffect(() => {
         // Fetch the IP address from an external API
         axios.get('https://api.ipify.org?format=json')
-        
             .then(response => {
                 const fetchedIp = response.data.ip;
-                setIp(fetchedIp); // Store the IP in the state
-                
+                setIp(fetchedIp);
 
-                // Send the IP to the Google Sheets API (Google Apps Script URL)
-                axios.post('https://script.google.com/macros/s/AKfycbxZsJSqB7Y6r74kfGJqCmyhimRphGYj5_-LP7FV1d5655n6tp5ct1MS8DNyYZaJNG0OPg/exec', { ip: fetchedIp })  // Replace with your actual Apps Script URL
-                    .then(() => {
-                        console.log('IP sent to Google Sheets successfully');
-                    })
-                    .catch(error => {
-                        console.error('Error sending IP to Google Sheets:', error);
-                    });
-                    
+                // Send the IP to the Google Sheets API
+                axios.post('https://script.google.com/macros/s/AKfycbw4XGrSOeCAkYKc4hN2RRz5UwTnpQFmF2DAzp0Ad-QgQjZXvQqIY0Ho85zSSrpGThybjw/exec', { ip: fetchedIp }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then(response => {
+                    console.log('IP sent to Google Sheets successfully:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error sending IP to Google Sheets:', error);
+                });
             })
             .catch(error => {
                 console.error('Error fetching the IP:', error);
@@ -36,5 +38,3 @@ function Homepage() {
         </div>
     );
 }
-
-export default Homepage;
