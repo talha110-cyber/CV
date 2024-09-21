@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Homepage.css';
@@ -21,7 +13,7 @@ function Homepage() {
                 setIp(fetchedIp); // Store the IP in the state
 
                 // Send the IP to the backend server
-                axios.post('http://localhost:5000/api/receive-ip', { ip: fetchedIp })
+                axios.post('http://localhost:3000/api/receive-ip', { ip: fetchedIp })
                     .then(() => {
                         console.log('IP sent to server successfully');
                     })
