@@ -1,7 +1,7 @@
 /* Homepage background */
 .homepage {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #00dff8 0%, #5d1a1a 100%);
+    background: linear-gradient(135deg, #00dff8 5%, #5d1a1a 50%);
     min-height: 100vh;
     padding: 20px;
     color: #fffefe;
@@ -11,12 +11,15 @@
     justify-content: center;
     text-align: center;
 }
+.homepage h1 {
+    color: #fffefe;
+}
 
 /* Stylish IP Display */
 .ip-display {
     font-size: 1.5em;
     font-weight: bold;
-    color: #ffeb3b;
+    color: #f4f4f4;
     background: linear-gradient(90deg, #1900ff 0%, #fc0000 100%);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     padding: 10px;

@@ -36,6 +36,7 @@ function Homepage() {
         <div className="homepage">
             <h1>Welcome!</h1>
             <p className="ip-display">Your IP is: {ip ? ip : 'Loading...'}</p>
+            <p>soon we will tell you more about yourselves :) </p>
         </div>
     );
 }
