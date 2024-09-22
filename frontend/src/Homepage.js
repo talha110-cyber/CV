@@ -33,9 +33,9 @@ function Homepage() {
     }, []);
 
     return (
-        <div>
-            <h1>Welcome to the Homepage</h1>
-            <p>Your IP is: {ip ? ip : 'Loading...'}</p>
+        <div className="homepage">
+            <h1>Welcome!</h1>
+            <p className="ip-display">Your IP is: {ip ? ip : 'Loading...'}</p>
         </div>
     );
 }
