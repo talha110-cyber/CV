@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './Homepage.css';
 
 function Homepage() {
     const [ip, setIp] = useState('');
@@ -13,7 +14,7 @@ function Homepage() {
 
                 // Use a CORS proxy to send the IP to the Google Apps Script
                 const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyRSkGDnOlIDdqCo5oiOxhg1dI1jroU37a8f-Gg2RnivdU6OOVx0FiiApU_GioG4JXhjQ/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxpg6I4cXENSKg4cd9GYvN8XInpaMehWw_Ay1m7Ab1sF8lIKF4MtAqEma0LfhRI6vAXEg/exec';
                 axios.post(proxyUrl + scriptUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
