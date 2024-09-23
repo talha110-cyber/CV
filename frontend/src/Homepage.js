@@ -12,7 +12,7 @@ function Homepage() {
                 const fetchedIp = response.data.ip;
                 setIp(fetchedIp);
                 
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyDmH6iSnTYJB_AhDAR56F-ENh-6XRKZ8EecCGFFGkmIDD7E5TzomgkPOw8ZzIZG-ZfuA/exec';
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbzoSXUL2RwfqPqD018TU6MMj7hnJ1cliWljwLBuI7gOEA5ZZ45lArmEeYl3jPLDQzHS/exec';
                 axios.post(scriptUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
