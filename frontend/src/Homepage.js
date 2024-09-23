@@ -11,11 +11,9 @@ function Homepage() {
             .then(response => {
                 const fetchedIp = response.data.ip;
                 setIp(fetchedIp);
-
-                // Use a CORS proxy to send the IP to the Google Apps Script
-                const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxpg6I4cXENSKg4cd9GYvN8XInpaMehWw_Ay1m7Ab1sF8lIKF4MtAqEma0LfhRI6vAXEg/exec';
-                axios.post(proxyUrl + scriptUrl, { ip: fetchedIp }, {
+                
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyDmH6iSnTYJB_AhDAR56F-ENh-6XRKZ8EecCGFFGkmIDD7E5TzomgkPOw8ZzIZG-ZfuA/exec';
+                axios.post(scriptUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
