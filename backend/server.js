@@ -1,20 +1,10 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const geoip = require('geoip-lite');  // Add for IP geolocation
-const useragent = require('express-useragent');  // Add for enhanced user-agent parsing
-const session = require('express-session');  // For session tracking
-const fs = require('fs');  // File system for logging
-const morgan = require('morgan');  // HTTP request logger
 const app = express();
-app.use(express.json()); // Modern Express approach
+app.use(express.json());
 
-app.use(cors({
-    origin: 'https://main.d1ikypkwvdq9a8.amplifyapp.com/' // Replace with your frontend's domain or '*'
-}));
-
-// Use user-agent parser middleware to track more device details
-app.use(useragent.express());
+app.use(cors()); // Allows all origins (not recommended for production)
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../frontend/build')));
@@ -29,10 +19,7 @@ app.post('/api/receive-ip', (req, res) => {
         res.status(400).send('No IP received');
     }
 });
-// New API route to send "talha" to the frontend
-app.get('/api/send-name', (req, res) => {
-    res.status(200).json({ name: 'talha' });
-});
+
 // Serve React front-end
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
