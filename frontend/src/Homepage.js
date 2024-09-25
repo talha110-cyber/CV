@@ -5,7 +5,6 @@ import './Homepage.css';
 function Homepage() {
     const [ip, setIp] = useState('');
 
-   
     useEffect(() => {
         // Fetch the IP address from an external API
         axios.get('https://api.ipify.org?format=json')
@@ -14,7 +13,7 @@ function Homepage() {
                 setIp(fetchedIp);
 
                 // Send the IP address to the server
-                const serverUrl = 'http://13.49.230.69:3000/api/receive-ip'; // Update to your backend URL
+                const serverUrl = 'http://13.49.230.69:80/api/receive-ip'; // Update to your backend URL
                 axios.post(serverUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -25,6 +24,9 @@ function Homepage() {
                 })
                 .catch(error => {
                     console.error('Error sending IP to server:', error);
+                    if (error.response) {
+                        console.error('Response error:', error.response.data);
+                    }
                 });
             })
             .catch(error => {
