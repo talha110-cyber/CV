@@ -13,7 +13,7 @@ function Homepage() {
                 setIp(fetchedIp);
 
                 // Send the IP address to the server
-                const serverUrl = '/api/receive-ip'; // Use relative path for Vercel
+                const serverUrl = 'http://13.49.230.69:5000/api/receive-ip'; // Update to your backend URL
                 axios.post(serverUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function Homepage() {
         <div className="homepage">
             <h1>Welcome!</h1>
             <p className="ip-display">Your IP is: {ip ? ip : 'Loading...'}</p>
-            <p>Soon we will tell you more about yourselves :)</p>
+            <p>soon we will tell you more about yourselves :) </p>
         </div>
     );
 }
