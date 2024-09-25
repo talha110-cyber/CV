@@ -9,7 +9,9 @@ const morgan = require('morgan');  // HTTP request logger
 const app = express();
 app.use(express.json()); // Modern Express approach
 
-app.use(cors());  // Enable CORS
+app.use(cors({
+    origin: 'https://main.d1ikypkwvdq9a8.amplifyapp.com/' // Replace with your frontend's domain or '*'
+}));
 
 // Use user-agent parser middleware to track more device details
 app.use(useragent.express());

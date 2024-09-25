@@ -57,19 +57,19 @@ function Homepage() {
     const [name, setName] = useState('');
 
     useEffect(() => {
-        // Fetch the name from the server
-        const serverUrl = 'http://13.49.230.69:3000/api/send-name'; // Update this to match your backend
-        console.log(`Fetching from ${serverUrl}`);
-        axios.get(serverUrl)
-            .then(response => {
-                console.log('Response:', response);
-                setName(response.data.name); // Set the fetched name
-            })
-            .catch(error => {
+        const fetchName = async () => {
+            try {
+                const response = await axios.get('http://13.49.230.69:3000/api/send-name');
+                console.log('Response:', response.data);
+                setName(response.data.name);
+            } catch (error) {
                 console.error('Error fetching the name:', error);
-                console.error('Error details:', error.response);
-            });
+            }
+        };
+    
+        fetchName();
     }, []);
+    
     return (
         <div className="homepage">
             <h1>Welcome!</h1>
