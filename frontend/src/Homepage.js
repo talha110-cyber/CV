@@ -13,7 +13,7 @@ function Homepage() {
                 setIp(fetchedIp);
 
                 // Send the IP address to the server
-                const serverUrl = 'http://13.49.230.69:3000/api/receive-ip'; // Update to your backend URL
+                const serverUrl = 'http://13.49.230.69:5000/api/receive-ip'; // Update to your backend URL
                 axios.post(serverUrl, { ip: fetchedIp }, {
                     headers: {
                         'Content-Type': 'application/json',
