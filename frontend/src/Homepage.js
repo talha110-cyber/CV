@@ -58,7 +58,7 @@ function Homepage() {
 
     useEffect(() => {
         // Fetch the name from the server
-        const serverUrl = 'https://your-backend-api-url/api/send-name'; // Replace with your actual backend API URL
+        const serverUrl = 'https://main.d1ikypkwvdq9a8.amplifyapp.com/api/send-name'; // Replace with your actual backend API URL
         axios.get(serverUrl)
             .then(response => {
                 setName(response.data.name); // Set the fetched name
