@@ -58,13 +58,16 @@ function Homepage() {
 
     useEffect(() => {
         // Fetch the name from the server
-        const serverUrl = 'https://main.d1ikypkwvdq9a8.amplifyapp.com/api/send-name'; // Replace with your actual backend API URL
+        const serverUrl = 'http://13.49.230.69:3000/api/send-name'; // Update this to match your backend
+        console.log(`Fetching from ${serverUrl}`);
         axios.get(serverUrl)
             .then(response => {
+                console.log('Response:', response);
                 setName(response.data.name); // Set the fetched name
             })
             .catch(error => {
                 console.error('Error fetching the name:', error);
+                console.error('Error details:', error.response);
             });
     }, []);
     return (
