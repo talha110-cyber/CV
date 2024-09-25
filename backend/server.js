@@ -16,7 +16,7 @@ app.use(useragent.express());
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '../frontend/build')));
-
+console.log("welcome to the server")
 // API route to receive IP and print it
 app.post('/api/receive-ip', (req, res) => {
     const clientIp = req.body.ip;
