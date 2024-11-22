@@ -1,1 +1,1 @@
-This is sample website for research purposes of our sproj
+This is sample website for research purposes
